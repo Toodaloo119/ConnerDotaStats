@@ -2,11 +2,21 @@
 <html>
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177838779-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177838779-1');
+</script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Projects</title>
+    <title>Mathmagician10's Stat Center</title>
     <!--
 
     Template 2103 Central
@@ -48,8 +58,10 @@
         <section class="tm-section-head" id="top">
 	<a name="top"></a>
             <header id="header" class="text-center tm-text-gray">
-		    <h1>Project Center</h1>
-                <p>DotA 2 Draft Analysis Projects for Professional Tournaments</p>
+		    <h1>Conner</h1>
+		    <h2>"Mathmagician10"</h2>
+		    <h1>Chapman</h1>
+                <p>Aspiring DotA 2 Caster and Analyst</p>
             </header>
 
             <nav class="navbar narbar-light">
@@ -161,7 +173,7 @@ casting adventures
 
                 <div class="col-xl-4 col-lg-4 col-md-12">
 				<img src="img/sc4-img-4.PNG" class="img-responsive tm-media-img">
-                    <h2><A HREF="DotA Analysis for OMEGA League: Americas Divine Division.html">DotA 2 Analysis Projects</A></h2>
+                    <h2><A HREF="OmegaLeagueAM.html">DotA 2 Analysis Projects</A></h2>
                     <p>I am going to provide draft expectations for tournaments that include all three
 phases of draft expectations for teams, as well as some general compiled statistics 
 for the teams involved such as average gametimes, winrates in the current patch, etc.
@@ -266,8 +278,49 @@ I could do better or what I am missing.
             });
 
             // Close menu after link click
-</script>
+            $('.nav-link').click(function () {
+                $('#mainNav').removeClass('show');
+            });
 
+            // https://css-tricks.com/snippets/jquery/smooth-scrolling/
+            // Select all links with hashes
+            $('a[href*="#"]')
+                // Remove links that don't actually link to anything
+                .not('[href="#"]')
+                .not('[href="#0"]')
+                .click(function (event) {
+                    // On-page links
+                    if (
+                        location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                        &&
+                        location.hostname == this.hostname
+                    ) {
+                        // Figure out element to scroll to
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        // Does a scroll target exist?
+                        if (target.length) {
+                            // Only prevent default if animation is actually gonna happen
+                            event.preventDefault();
+                            $('html, body').animate({
+                                scrollTop: target.offset().top + 1
+                            }, 1000, function () {
+                                // Callback after animation
+                                // Must change focus!
+                                var $target = $(target);
+                                $target.focus();
+                                if ($target.is(":focus")) { // Checking if the target was focused
+                                    return false;
+                                } else {
+                                    $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                    $target.focus(); // Set focus again
+                                };
+                            });
+                        }
+                    }
+                });
+        });
+    </script>
 
 </body>
 
